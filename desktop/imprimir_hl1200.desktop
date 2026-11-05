@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Imprimir en HL1200 (Seguro RLE)
+Comment=Optimiza e imprime sin errores en Brother HL-1200
+Exec=python3 /home/gus/brother-gdi-print-helper/src/imprimir_gui.py %f
+Icon=printer
+Terminal=false
+Type=Application
+Categories=Graphics;Office;GTK;
+MimeType=application/pdf;image/png;image/jpeg;image/jpg;

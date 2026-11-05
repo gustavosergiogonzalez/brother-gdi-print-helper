@@ -1,15 +1,33 @@
-# Ÿ’¨ Brother HLM1200 / GDI Print Helper for Linux & OpenWrt
+# ðŸ–¨ï¸ Brother HL-1200 / GDI Print Helper for Linux & OpenWrt
 
-A GTK3 GUI  utility to print PDFs and images reliably to low-memory GDI printers (such as Brother HL-1200, HL-1110, HL-1210W) connected via OpenWrt (`p910nd`) or CUPS.
+A GTK3 GUI utility to print PDFs and images reliably to low-memory GDI printers (such as Brother HL-1200, HL-1110, HL-1210W) connected via OpenWrt (`p910nd`) or CUPS.
 
 ---
 
-## 69 The Problem
+## ðŸ›‘ The Problem
 
-GDI laser printers rely on host-based rendering and have minimal onboard memory (e.g. *(1 MB RAM**). 
+GDI laser printers rely on host-based rendering and have minimal onboard memory (e.g. **1 MB RAM**). 
 
 When printing high-density documents, A3 sheets, or complex PDFs from Linux:
--CUPS / `brlaser` generates large uncompressed raster buffers.
--Che printer memory overflows or encounters unexpected data headers.
-,Q¡”ÁÉ¥¹Ð©½ˆ™…¥±Ì…¹Ñ¡”ÁÉ¥¹Ñ•È™±…Í¡•Ì¥ÑÌ€¨©ÉÉ½È1Ì¨¨¸((´´´((ŒŒ‚~J„Q¡”M½±ÕÑ¥½¸()Q¡¥ÌÑ½½°ÁÉ•ÁÉ½•ÍÍ•ÌÑ¡”™¥±”‰•™½É”ÍÕ‰µ¥ÑÑ¥¹œ¥ÐÑ¼Ñ¡”UALÍÁ½½±•Èè((Ä¸€¨©ÕÑ¼µI½Ñ…Ñ”1…¹‘Í…Á”è¨¨•Ñ•ÑÌ±…¹‘Í…Á”½É¥•¹Ñ…Ñ¥½¸€¡Ý¥‘Ñ €ø¡•¥¡Ð¤…¹É½Ñ…Ñ•ÌÁ…”¥µ…•Ì‰ä€´äÃ
-ÀÑ¼™¥ÐÐÁ…Á•È½ÉÉ•Ñ±ä¸(È¸€¨©±•…¸	¥¹…É¥é…Ñ¥½¸€ Äµ‰¥Ð¤è¨¨Q¡É•Í¡½±‘Ì¥µ…”½¹Ñ•¹ÐÑ¼ÁÕÉ”‰±…¬µ…¹µÝ¡¥Ñ”¸Q¡¥ÌÉ•µ½Ù•ÌÉ…åÍ…±”¹½¥Í”…¹½ÁÑ¥µ¥é•ÌÑ¡”ÍÑÉ•…´™½ÈÑ¡”ÁÉ¥¹Ñ•ÈÌ¹…Ñ¥Ù”I1É…ÍÑ•È•¹½‘¥¹œ¸(Ì¸€¨©¥É•ÐUAL¥ÍÁ…Ñ è¨¨M•¹‘ÌÑ¡”É•ÍÕ±Ñ¥¹œÐ‘½Õµ•¹Ð‘¥É•Ñ±äÑ¼Ñ¡”ÁÉ¥¹Ñ•ÈÕÍ¥¹œ±Á€Ý¥Ñ •áÁ±¥¥ÐÍ•ÑÑ¥¹Ì€¡€µ¼A…•M¥é”õÐ€µ¼I•Í½±ÕÑ¥½¸ôØÀÁ‘Á¥€¤°‰åÁ…ÍÍ¥¹œ‘•Í­Ñ½À•¹Ù¥É½¹µ•¹Ð‘¥…±½œ½Ù•ÉÉ¥‘•Ì¸((´´´((ŒŒƒÂ~a‰EÕ¥¬%¹ÍÑ…±±…Ñ¥½¸((ŒØ€Ä¸%¹ÍÑ…±°MåÍÑ•´•Á•¹‘•¹¥•Ì€¡•‰¥…¸€¼U‰Õ¹ÑÔ€¼1¥¹Õà5¥¹Ð¤)‰…Í )ÍÕ‘¼…ÁÐÕÁ‘…Ñ”)ÍÕ‘¼…ÁÐ¥¹ÍÑ…±°ÁåÑ¡½¸Ìµ¤¥ÈÄ¸ÈµÑ¬´Ì¸ÀÁåÑ¡½¸ÌµÁ¥°Á½ÁÁ±•ÈµÕÑ¥±Ì¥µœÉÁ‘˜€µä)€((ŒŒ€È¸±½¹”I•Á½Í¥Ñ½Éä€˜IÕ¸%¹ÍÑ…±±•È)‰…Í )¥Ð±½¹”¡ÑÑÁÌè¼½¥Ñ¡Õˆ¹½´½ÕÍÑ…Ù½Í•É¥½½¹é…±•è½‰É½Ñ¡•Èµ‘¤µÁÉ¥¹Ðµ¡•±Á•È¹¥Ð)‰É½Ñ¡•Èµ‘¤µÁÉ¥¹Ðµ¡•±Á•È(¸½¥¹ÍÑ…±°¹Í )€((´´´((ŒŒ‚~DI•½µµ•¹‘•=Á•¹]ÉÐ½¹™¥œ€¡p½•ÑŒ½½¹™¥œ½ÀäÄÁ¹‘€¤()¥¹¤)½¹™¥œÀäÄÁ¹(€€€½ÁÑ¥½¸‘•Ù¥”€œ½‘•Ø½ÕÍˆ½±ÀÀœ(€€€½ÁÑ¥½¸•¹…‰±•€œÄœ(€€€½ÁÑ¥½¸Á½ÉÐ€œÀœ(€€€½ÁÑ¥½¸‰¥‘¥É•Ñ¥½¹…°€œÄœ)€((´´´((ŒŒƒÂ~N¤1¥•¹Í”)5%P1¥•¹Í”¸(
+- CUPS / `brlaser` generates large uncompressed raster buffers.
+- The printer memory overflows or encounters unexpected data headers.
+- The print job fails and the printer flashes its **Error LEDs**.
+
+---
+
+## ðŸ’¡ The Solution
+
+This tool preprocesses the file before submitting it to the CUPS spooler:
+
+1. **Auto-Rotate Landscape:** Detects landscape orientation (width > height) and rotates page images by -90Â° to fit A4 paper correctly.
+2. **Clean Binarization (1-bit):** Thresholds image content to pure black-and-white. This removes grayscale noise and optimizes the stream for the printer's native RLE raster encoding.
+3. **Direct CUPS Dispatch:** Sends the resulting A4 document directly to the printer using `lp` with explicit settings (`-o PageSize=A4 -o Resolution=600dpi`), bypassing desktop environment dialog overrides.
+
+---
+
+## ðŸš€ Quick Installation
+
+### 1. Install System Dependencies (Debian / Ubuntu / Linux Mint)
+```bash
+sudo apt update
+sudo apt install python3-gi gir1.2-gtk-3.0 python3-pil poppler-utils img2pdf -y
